@@ -84,6 +84,31 @@
             transition: background 0.2s;
         }
 
+        .button-container {
+            padding: 0 20px 20px;
+            text-align: right;
+        }
+
+        .download-btn {
+            background: #27ae60;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .download-btn:hover {
+            background: #219653;
+            transform: translateY(-2px);
+        }
+
+        .download-btn:active {
+            transform: translateY(0);
+        }
+
         @media (max-width: 768px) {
             th, td {
                 padding: 10px;
@@ -92,6 +117,11 @@
             
             .header h1 {
                 font-size: 1.5em;
+            }
+
+            .download-btn {
+                width: 100%;
+                padding: 10px;
             }
         }
     </style>
@@ -126,6 +156,9 @@
                 </tbody>
             </table>
         </div>
+        <div class="button-container">
+            <button class="download-btn" onclick="downloadExcel()">Download as Excel</button>
+        </div>
     </div>
 
     <script>
@@ -155,7 +188,6 @@
                     }
                 });
 
-                // Toggle sort direction
                 if (header.dataset.order === 'asc') {
                     rows.reverse();
                     header.dataset.order = 'desc';
@@ -163,10 +195,31 @@
                     header.dataset.order = 'asc';
                 }
 
-                // Re-append sorted rows
                 rows.forEach(row => tbody.appendChild(row));
             }
         });
+
+        function downloadExcel() {
+            const table = document.getElementById('upliftTable');
+            const rows = Array.from(table.querySelectorAll('tr'));
+            let csvContent = '';
+
+            rows.forEach(row => {
+                const cells = Array.from(row.querySelectorAll('th, td'));
+                const rowData = cells.map(cell => `"${cell.textContent.replace(/"/g, '""')}"`).join(',');
+                csvContent += rowData + '\n';
+            });
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            
+            link.setAttribute('href', url);
+            link.setAttribute('download', 'Fuel_Uplift_Records.csv');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
     </script>
 </body>
 </html>
