@@ -166,22 +166,48 @@
             const table = document.getElementById('upliftTable');
             const headers = table.querySelectorAll('th');
             
+            // Format dates to MM/dd/yyyy
+            formatDates();
+
             headers.forEach((header, index) => {
                 header.addEventListener('click', () => {
                     sortTable(index);
                 });
             });
 
+            function formatDates() {
+                const rows = table.querySelectorAll('tbody tr');
+                rows.forEach(row => {
+                    const cells = row.querySelectorAll('td');
+                    // Uplift Date (index 0)
+                    cells[0].textContent = formatDateToMMDDYYYY(cells[0].textContent);
+                    // Date (index 8)
+                    cells[8].textContent = formatDateToMMDDYYYY(cells[8].textContent);
+                });
+            }
+
+            function formatDateToMMDDYYYY(dateStr) {
+                const date = new Date(dateStr);
+                const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+                const day = String(date.getDate()).padStart(2, '0');
+                const year = date.getFullYear();
+                return `${month}/${day}/${year}`;
+            }
+
             function sortTable(column) {
                 const tbody = table.querySelector('tbody');
                 const rows = Array.from(tbody.querySelectorAll('tr'));
-                const isNumeric = !isNaN(parseFloat(rows[0].cells[column].textContent));
+                const isDateColumn = column === 0 || column === 8;
+                const isNumeric = !isNaN(parseFloat(rows[0].cells[column].textContent)) && !isDateColumn;
                 
                 rows.sort((a, b) => {
                     let aValue = a.cells[column].textContent;
                     let bValue = b.cells[column].textContent;
                     
-                    if (isNumeric) {
+                    if (isDateColumn) {
+                        return new Date(aValue.split('/').reverse().join('-')) - 
+                               new Date(bValue.split('/').reverse().join('-'));
+                    } else if (isNumeric) {
                         return parseFloat(aValue) - parseFloat(bValue);
                     } else {
                         return aValue.localeCompare(bValue);
