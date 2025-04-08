@@ -3,51 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fuel Uplift Records</title>
+    <title>Passport Information</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
         body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            margin: 0;
             padding: 20px;
+            min-height: 100vh;
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-
-        .header {
-            background: #2c3e50;
-            color: white;
             padding: 20px;
-            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
-        .header h1 {
-            font-size: 2em;
-            margin-bottom: 10px;
+        h1 {
+            text-align: center;
+            color: #2a5298;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .table-wrapper {
             overflow-x: auto;
-            padding: 20px;
+            border-radius: 10px;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
             background: white;
+            border-radius: 10px;
         }
 
         th, td {
@@ -57,22 +50,11 @@
         }
 
         th {
-            background: #3498db;
+            background: #2a5298;
             color: white;
-            cursor: pointer;
-            transition: background 0.3s;
-            position: relative;
-        }
-
-        th:hover {
-            background: #2980b9;
-        }
-
-        th::after {
-            content: '↕';
-            position: absolute;
-            right: 10px;
-            opacity: 0.7;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
         }
 
         tr:nth-child(even) {
@@ -80,240 +62,104 @@
         }
 
         tr:hover {
-            background: #f1f3f5;
-            transition: background 0.2s;
-        }
-
-        .button-container {
-            padding: 0 20px 20px;
-            text-align: right;
+            background: #e9ecef;
+            transition: background 0.3s ease;
         }
 
         .download-btn {
-            background: #27ae60;
+            display: block;
+            margin: 20px auto;
+            padding: 12px 30px;
+            background: #2a5298;
             color: white;
-            padding: 12px 24px;
             border: none;
             border-radius: 25px;
+            font-size: 16px;
             cursor: pointer;
-            font-size: 1em;
-            transition: background 0.3s, transform 0.2s;
+            transition: all 0.3s ease;
         }
 
         .download-btn:hover {
-            background: #219653;
+            background: #1e3c72;
             transform: translateY(-2px);
-        }
-
-        .download-btn:active {
-            transform: translateY(0);
-        }
-
-        @media (max-width: 768px) {
-            th, td {
-                padding: 10px;
-                font-size: 0.9em;
-            }
-            
-            .header h1 {
-                font-size: 1.5em;
-            }
-
-            .download-btn {
-                width: 100%;
-                padding: 10px;
-            }
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>Fuel Uplift Records</h1>
-            <p>Updated as of April 06, 2025</p>
-        </div>
+        <h1>Passport Information</h1>
         <div class="table-wrapper">
-            <table id="upliftTable">
+            <table id="passportTable">
                 <thead>
                     <tr>
-                      <th>الاسم</th>
-                      <th>رقم الباسبور</th>
-                      <th>تاريخ الميلاد</th>
-                      <th>تاريخ الاصدار</th>
-                      <th>تاريخ الانتهاء</th>
-                      <th>الجنسية</th>
-                      <th>موافقة امنية</th>
-                      <th>بدون موافقة امنية</th>
-                      <th>دمشق</th>
-                      <th>حلب</th>
+                        <th>Name</th>
+                        <th>Passport Number</th>
+                        <th>Date of Birth</th>
+                        <th>Issue Date</th>
+                        <th>Expiry Date</th>
+                        <th>Nationality</th>
+                        <th>Security Approval</th>
+                        <th>Route</th>
                     </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>ALAA BOUTA</td>
-                      <td>N00526122</td>
-                      <td>1997-07-29 00:00:00</td>
-                      <td>2023-10-22 00:00:00</td>
-                      <td>2026-04-21 00:00:00</td>
-                      <td>SYR</td>
-                      <td>مع موافقة امنية</td>
-                      <td></td>
-                      <td>IST-DAM</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>AMER GHADBAN</td>
-                      <td>N01662387</td>
-                      <td>1968-07-07 00:00:00</td>
-                      <td>2024-08-20 00:00:00</td>
-                      <td>2027-02-19 00:00:00</td>
-                      <td>SYR</td>
-                      <td>مع موافقة امنية</td>
-                      <td></td>
-                      <td>IST-DAM</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>ROUBA ALNOUNOU</td>
-                      <td>N00899509</td>
-                      <td>1987-06-01 00:00:00</td>
-                      <td>2024-02-01 00:00:00</td>
-                      <td>2030-01-31 00:00:00</td>
-                      <td>SYR</td>
-                      <td>مع موافقة امنية</td>
-                      <td></td>
-                      <td>IST-DAM</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>DALAA AZIZIA</td>
-                      <td>N00899544</td>
-                      <td>2015-07-12 00:00:00</td>
-                      <td>2024-02-01 00:00:00</td>
-                      <td>2030-01-31 00:00:00</td>
-                      <td>SYR</td>
-                      <td>مع موافقة امنية</td>
-                      <td></td>
-                      <td>IST-DAM</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>MHD MALAZ AZIZIA</td>
-                      <td>N00952089</td>
-                      <td>2009-05-19 00:00:00</td>
-                      <td>2024-02-05 00:00:00</td>
-                      <td>2026-02-04 00:00:00</td>
-                      <td>SYR</td>
-                      <td>مع موافقة امنية</td>
-                      <td></td>
-                      <td>IST-DAM</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>SULIAMAN AL KELANI</td>
-                      <td>N016652936</td>
-                      <td>1958-04-05 00:00:00</td>
-                      <td></td>
-                      <td></td>
-                      <td>SYR</td>
-                      <td>مع موافقة امنية</td>
-                      <td></td>
-                      <td>IST-DAM</td>
-                      <td></td>
-                    </tr>
-                  </tbody>
+                </thead>
+                <tbody></tbody>
             </table>
         </div>
-        <div class="button-container">
-            <button class="download-btn" onclick="downloadExcel()">Download as Excel</button>
-        </div>
+        <button class="download-btn" onclick="downloadCSV()">Download as CSV</button>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const table = document.getElementById('upliftTable');
-            const headers = table.querySelectorAll('th');
-            
-            // Format dates to MM/dd/yyyy
-            formatDates();
+        const data = [
+            { name: "ALAA BOUTA", passport: "N00526122", dob: "1997-07-29", issue: "2023-10-22", expiry: "2026-04-21", nationality: "SYR", approval: "مع موافقة امنية", route: "IST-DAM" },
+            { name: "AMER GHADBAN", passport: "N01662387", dob: "1968-07-07", issue: "2024-08-20", expiry: "2027-02-19", nationality: "SYR", approval: "مع موافقة امنية", route: "IST-DAM" },
+            { name: "ROUBA ALNOUNOU", passport: "N00899509", dob: "1987-06-01", issue: "2024-02-01", expiry: "2030-01-31", nationality: "SYR", approval: "مع موافقة امنية", route: "IST-DAM" },
+            { name: "DALAA AZIZIA", passport: "N00899544", dob: "2015-07-12", issue: "2024-02-01", expiry: "2030-01-31", nationality: "SYR", approval: "مع موافقة امنية", route: "IST-DAM" },
+            { name: "MHD MALAZ AZIZIA", passport: "N00952089", dob: "2009-05-19", issue: "2024-02-05", expiry: "2026-02-04", nationality: "SYR", approval: "مع موافقة امنية", route: "IST-DAM" },
+            { name: "SULIAMAN AL KELANI", passport: "N016652936", dob: "1958-04-05", issue: "", expiry: "", nationality: "SYR", approval: "مع موافقة امنية", route: "IST-DAM" }
+        ];
 
-            headers.forEach((header, index) => {
-                header.addEventListener('click', () => {
-                    sortTable(index);
-                });
-            });
-
-            function formatDates() {
-                const rows = table.querySelectorAll('tbody tr');
-                rows.forEach(row => {
-                    const cells = row.querySelectorAll('td');
-                    // Uplift Date (index 0)
-                    cells[0].textContent = formatDateToMMDDYYYY(cells[0].textContent);
-                    // Date (index 8)
-                    cells[8].textContent = formatDateToMMDDYYYY(cells[8].textContent);
-                });
-            }
-
-            function formatDateToMMDDYYYY(dateStr) {
-                const date = new Date(dateStr);
-                const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based
-                const day = String(date.getDate()).padStart(2, '0');
-                const year = date.getFullYear();
-                return `${month}/${day}/${year}`;
-            }
-
-            function sortTable(column) {
-                const tbody = table.querySelector('tbody');
-                const rows = Array.from(tbody.querySelectorAll('tr'));
-                const isDateColumn = column === 0 || column === 8;
-                const isNumeric = !isNaN(parseFloat(rows[0].cells[column].textContent)) && !isDateColumn;
-                
-                rows.sort((a, b) => {
-                    let aValue = a.cells[column].textContent;
-                    let bValue = b.cells[column].textContent;
-                    
-                    if (isDateColumn) {
-                        return new Date(aValue.split('/').reverse().join('-')) - 
-                               new Date(bValue.split('/').reverse().join('-'));
-                    } else if (isNumeric) {
-                        return parseFloat(aValue) - parseFloat(bValue);
-                    } else {
-                        return aValue.localeCompare(bValue);
-                    }
-                });
-
-                if (header.dataset.order === 'asc') {
-                    rows.reverse();
-                    header.dataset.order = 'desc';
-                } else {
-                    header.dataset.order = 'asc';
-                }
-
-                rows.forEach(row => tbody.appendChild(row));
-            }
-        });
-
-        function downloadExcel() {
-            const table = document.getElementById('upliftTable');
-            const rows = Array.from(table.querySelectorAll('tr'));
-            let csvContent = '';
-
-            rows.forEach(row => {
-                const cells = Array.from(row.querySelectorAll('th, td'));
-                const rowData = cells.map(cell => `"${cell.textContent.replace(/"/g, '""')}"`).join(',');
-                csvContent += rowData + '\n';
-            });
-
-            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-            const link = document.createElement('a');
-            const url = URL.createObjectURL(blob);
-            
-            link.setAttribute('href', url);
-            link.setAttribute('download', 'Fuel_Uplift_Records.csv');
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+        function formatDate(dateStr) {
+            if (!dateStr) return "";
+            const [year, month, day] = dateStr.split("-");
+            return `${month}-${day}-${year}`;
         }
+
+        function populateTable() {
+            const tbody = document.querySelector("tbody");
+            data.forEach(item => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>${item.passport}</td>
+                    <td>${formatDate(item.dob)}</td>
+                    <td>${formatDate(item.issue)}</td>
+                    <td>${formatDate(item.expiry)}</td>
+                    <td>${item.nationality}</td>
+                    <td>${item.approval}</td>
+                    <td>${item.route}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function downloadCSV() {
+            const headers = ["Name,Passport Number,Date of Birth,Issue Date,Expiry Date,Nationality,Security Approval,Route"];
+            const rows = data.map(item => 
+                `${item.name},${item.passport},${formatDate(item.dob)},${formatDate(item.issue)},${formatDate(item.expiry)},${item.nationality},${item.approval},${item.route}`
+            );
+            const csvContent = headers.concat(rows).join("\n");
+            const blob = new Blob([csvContent], { type: "text/csv" });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "passport_data.csv";
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+
+        // Populate table when page loads
+        window.onload = populateTable;
     </script>
 </body>
 </html>
